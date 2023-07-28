@@ -11,7 +11,7 @@ const MONGODB = process.env.MONGODB
 app.use(cors())
 app.use(epxress.json())
 
-app.use('/api/user',require('./routes/userRoutes'))
+app.use('/api/users',require('./routes/userRoutes'))
 app.use('/api/posts',require('./routes/postRoutes'))
 
 const start = async()=>{
