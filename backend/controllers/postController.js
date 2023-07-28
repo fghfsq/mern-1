@@ -16,15 +16,6 @@ const getAll = async(req,res)=>{
         res.status(500).json({message:'pizdec getAll'})
     }
 }
-const update = async(req,res)=>{
-    try{
-        res.status(200).json({message:`update ${req.params.id}`})
-    }
-    catch(err){
-        console.log(err)
-        res.status(500).json({message:'update'})
-    }
-}
 const remove = async(req,res)=>{
     try{
         res.status(200).json({message:`remove ${req.params.id}`})
@@ -38,7 +29,6 @@ const remove = async(req,res)=>{
 const postController = {
     addPost,
     getAll,
-    update,
     remove
 }
 
