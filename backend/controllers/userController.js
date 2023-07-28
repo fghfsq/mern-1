@@ -69,7 +69,13 @@ const login = async(req,res) =>{
 }
 const getMe = async(req,res) =>{
     try{
-        res.status(200).json({message:'getMe'})
+        const user = await User.findById(req.userId)
+
+        if(!user){
+            return res.status(400).json({message:'net nihuya'})
+        }
+        
+        res.json(user)
     }
     catch(err){
         console.log(err)

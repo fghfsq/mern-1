@@ -1,6 +1,15 @@
+const Post = require('../models/Post')
+
 const addPost = async(req,res)=>{
     try{
-        res.status(200).json({message:'addPost'})
+        const doc = new Post({
+            text:req.body.text,
+            user:req.userId
+        })
+
+        const post = await doc.save()
+
+        res.json(post)
     }
     catch(err){
         console.log(err)
@@ -9,7 +18,9 @@ const addPost = async(req,res)=>{
 }
 const getAll = async(req,res)=>{
     try{
-        res.status(200).json({message:'getAll'})
+        const posts = await Post.find({user:req.userId})
+
+        res.json(posts)
     }
     catch(err){
         console.log(err)
@@ -18,7 +29,9 @@ const getAll = async(req,res)=>{
 }
 const remove = async(req,res)=>{
     try{
-        res.status(200).json({message:`remove ${req.params.id}`})
+        await Post.findByIdAndDelete(req.params.id)
+
+        res.json({success:true})
     }
     catch(err){
         console.log(err)
