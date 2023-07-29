@@ -67,26 +67,10 @@ const login = async(req,res) =>{
         res.status(500).json({message:'login'})
     }
 }
-const getMe = async(req,res) =>{
-    try{
-        const user = await User.findById(req.userId)
-
-        if(!user){
-            return res.status(400).json({message:'net nihuya'})
-        }
-        
-        res.json(user)
-    }
-    catch(err){
-        console.log(err)
-        res.status(500).json({message:'pizdec getMe'})
-    }
-}
 
 const userController = {
     register,
-    login,
-    getMe
+    login
 }
 
 module.exports = userController

@@ -6,7 +6,6 @@ const checkAuth = require('../utils/checkAuth')
 
 const router = Router()
 
-router.get('/getMe',checkAuth,userController.getMe)
 router.post('/register',validation.registerValidation,checkValidation,userController.register)
 router.post('/login',validation.loginValidation,checkValidation,userController.login)
 
