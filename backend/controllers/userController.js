@@ -24,7 +24,7 @@ const register = async(req,res) =>{
 
         const {passwordHash,...userData} = user._doc
 
-        res.json({
+        return res.json({
             ...userData,
             token
         })
