@@ -1,39 +1,39 @@
 import axios from 'axios'
 
-const API_URL = '/api/goals/'
+const API_URL = '/api/posts/'
 
 const addGoal = async(token,goalData)=>{
     const config = {
-        Headers:{
+        headers:{
             Authorization:`Bearer ${token}`
         }
     }
+   
+    const goal = await axios.post(API_URL,goalData,config)
 
-    const goal = await axios.post(API_URL,config,goalData)
-
-    return goal.response
+    return goal.data
 }
 const getAll = async(token)=>{
     const config = {
-        Headers:{
+        headers:{
             Authorization:`Bearer ${token}`
         }
     }
 
     const goals = await axios.get(API_URL,config)
 
-    return goals.response
+    return goals.data
 }
 const remove = async(token,goalId)=>{
     const config = {
-        Headers:{
+        headers:{
             Authorization:`Bearer ${token}`
         }
     }
 
-    const goal = await axios.delete(API_URL,config,goalId)
+    const goal = await axios.delete(API_URL+goalId,config)
 
-    return goal.response
+    return goal.data
 }
 
 const goalService = {

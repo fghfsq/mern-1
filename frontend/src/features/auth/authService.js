@@ -9,7 +9,6 @@ const register = async(userData)=>{
 
         localStorage.setItem('user',JSON.stringify(user.data))
     }
-
     return user.data
 }
 const login = async(userData)=>{

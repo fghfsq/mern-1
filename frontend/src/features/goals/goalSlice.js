@@ -13,7 +13,7 @@ export const addGoal = createAsyncThunk('goal/addGoal',async(goalData,thunkAPI)=
     try{
         const token = thunkAPI.getState().auth.user.token
 
-        return await goalService.addGoal(goalData,token)
+        return await goalService.addGoal(token,goalData)
     }
     catch(err){
         const message = (err.response && err.response.data && err.response.data.message)
